@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand: dark navy (anchored on #0e2b5c) + yellow accent */
+  --color-navy-950: #091d3e;
+  --color-navy-900: #0e2b5c;
+  --color-navy-800: #123778;
+  --color-navy-700: #17489b;
+  --color-navy-600: #1d5ac3;
+  --color-navy-500: #3373e0;
+
+  --color-gold-300: #ffe08a;
+  --color-gold-400: #ffcd3c;
+  --color-gold-500: #f5b400;
+  --color-gold-600: #cc9500;
+  --color-gold-700: #a37600;
+
+  --color-ink: #0d1420;
+  --color-ink-muted: #4a5568;
+  --color-paper: #fbfaf7;
+  --color-paper-dim: #f3f1ea;
+  --color-line: #e4e1d6;
+
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-big-shoulders);
+  --font-logo: var(--font-big-shoulders);
+
+  --animate-fade-up: fade-up 0.5s ease-out both;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+  }
+
+  h1:not(.heading-bold),
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 400 !important;
+    letter-spacing: normal !important;
+  }
+
+  /* headings that need extra weight opt out of the reset above via :not()
+     instead of fighting it with layered !important (cascade-layer +
+     !important priority doesn't invert the way spec suggests in every engine) */
+  .heading-bold {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: normal;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold-500);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
