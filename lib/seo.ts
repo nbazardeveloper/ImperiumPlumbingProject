@@ -31,11 +31,13 @@ export function buildMetadata({ title, description, path, noIndex }: BuildMetada
       siteName: siteConfig.name,
       locale: siteConfig.locale,
       type: "website",
+      images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: ["/opengraph-image"],
     },
   };
 }
