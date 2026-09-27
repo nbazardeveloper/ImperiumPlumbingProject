@@ -91,7 +91,7 @@ export function LeadForm({ defaultService }: { defaultService?: string }) {
             autoComplete="tel"
             onFocus={handleFocusOnce}
             className={inputClasses}
-            placeholder="(312) 555-0100"
+            placeholder="(408) 555-0100"
           />
         </div>
       </div>

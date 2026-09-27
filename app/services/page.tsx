@@ -8,7 +8,7 @@ import { buildMetadata } from "@/lib/seo";
 import { businessConfig } from "@/lib/config";
 
 export const metadata: Metadata = buildMetadata({
-  title: `Plumbing Services in ${businessConfig.primaryCity}`,
+  title: `Plumbing Services in ${businessConfig.citiesDisplay}`,
   description: `All plumbing services offered by ${businessConfig.legalName} in ${businessConfig.serviceArea}: plumbing repair, sewer & drain, water heaters, repiping, leak detection, and hydro jetting.`,
   path: "/services",
 });

@@ -42,7 +42,7 @@ export function Hero() {
           <div className="absolute right-8 bottom-0 flex w-full max-w-sm translate-y-1/2 items-center gap-5 bg-gold-500 p-6 shadow-2xl">
             <p className="text-5xl font-extrabold text-navy-950">{businessConfig.yearsExperience}</p>
             <p className="text-sm font-semibold uppercase leading-snug tracking-wide text-navy-950">
-              Years Serving {businessConfig.primaryCity} Homes &amp; Businesses
+              Years Serving {businessConfig.citiesDisplay} Homes &amp; Businesses
             </p>
           </div>
         </Container>

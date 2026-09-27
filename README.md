@@ -39,7 +39,7 @@ The source company document didn't include these — they're marked clearly in t
 
 ## Geography
 
-The source document said "Bay Area" but the business actually operates out of **Chicago, IL** (confirmed directly). All copy, metadata, and schema use `businessConfig.primaryCity` / `serviceArea` from `lib/config.ts` — update those two fields if the service area ever changes; nothing else needs touching.
+The business serves **San Jose, CA** (primary) and **Dublin, CA** (secondary). All copy, metadata, and schema use the geography fields in `lib/config.ts` (`primaryCity`, `secondaryCity`, `serviceCities`, `citiesDisplay`, `serviceArea`, `serviceAreaShort`) — update them there if the service area ever changes; nothing else needs touching.
 
 ## Analytics / conversion tracking
 

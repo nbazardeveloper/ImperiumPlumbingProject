@@ -25,7 +25,7 @@ export default function ServiceAreaPage() {
       <ServiceAreaSection />
       <ServiceGrid
         eyebrow="Available Here"
-        heading={`Services Offered in ${businessConfig.primaryCity}`}
+        heading={`Services Offered in ${businessConfig.citiesDisplay}`}
       />
       <CtaSection />
     </>

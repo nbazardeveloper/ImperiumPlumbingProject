@@ -31,14 +31,14 @@ export function buildLocalBusinessSchema() {
     email: businessConfig.email,
     image: `${siteConfig.url}/images/og-default.jpg`,
     priceRange: "$$",
-    areaServed: {
+    areaServed: businessConfig.serviceCities.map((city) => ({
       "@type": "City",
-      name: businessConfig.primaryCity,
+      name: city,
       containedInPlace: {
         "@type": "State",
         name: businessConfig.state,
       },
-    },
+    })),
     address: {
       "@type": "PostalAddress",
       addressLocality: businessConfig.primaryCity,
@@ -83,10 +83,10 @@ export function buildServiceSchema(args: {
     provider: {
       "@id": `${siteConfig.url}/#localbusiness`,
     },
-    areaServed: {
+    areaServed: businessConfig.serviceCities.map((city) => ({
       "@type": "City",
-      name: businessConfig.primaryCity,
-    },
+      name: city,
+    })),
     url: `${siteConfig.url}${args.path}`,
   };
 }

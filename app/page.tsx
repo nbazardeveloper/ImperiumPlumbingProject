@@ -15,7 +15,7 @@ import { businessConfig } from "@/lib/config";
 import { generalFaqs } from "@/lib/faq-data";
 
 export const metadata: Metadata = buildMetadata({
-  title: `${businessConfig.legalName} | Plumbing Services in ${businessConfig.primaryCity}`,
+  title: `${businessConfig.legalName} | Plumbing Services in ${businessConfig.citiesDisplay}`,
   description: `Residential and commercial plumbing in ${businessConfig.serviceArea}. Plumbing repair, sewer & drain, water heaters, repiping, leak detection, and hydro jetting.`,
   path: "/",
 });

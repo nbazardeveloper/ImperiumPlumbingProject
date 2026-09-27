@@ -22,11 +22,15 @@ export const businessConfig = {
   hours: "Mon-Sat: 8am - 6pm",
 
   // Geography — the confirmed business facts. Change here to propagate everywhere.
-  primaryCity: "Chicago",
-  state: "Illinois",
-  stateAbbr: "IL",
-  serviceArea: "Chicago and the surrounding area",
-  serviceAreaShort: "Chicago area",
+  // San Jose is the primary market, Dublin the secondary one.
+  primaryCity: "San Jose",
+  secondaryCity: "Dublin",
+  serviceCities: ["San Jose", "Dublin"],
+  citiesDisplay: "San Jose & Dublin",
+  state: "California",
+  stateAbbr: "CA",
+  serviceArea: "San Jose, Dublin, and the surrounding area",
+  serviceAreaShort: "San Jose & Dublin area",
 
   serviceType: ["Residential", "Commercial"],
 

@@ -9,7 +9,7 @@ export function ServiceAreaSection({ compact = false }: { compact?: boolean }) {
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-sm font-bold uppercase tracking-wide text-gold-400">Service Area</p>
           <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-            Plumbing Service in {businessConfig.primaryCity}
+            Plumbing Service in {businessConfig.citiesDisplay}
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-white">
             Imperium Plumbing serves {businessConfig.serviceArea} for both residential and
