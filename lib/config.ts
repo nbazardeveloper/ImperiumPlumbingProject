@@ -10,9 +10,9 @@ export const businessConfig = {
   founder: "Azat Akynov",
   tagline: "Fast, Straightforward Plumbing",
 
-  phone: "+1 320-339-5170",
-  phoneHref: "tel:+13203395170",
-  phoneDisplay: "(320) 339-5170",
+  phone: "+1 925-545-8860",
+  phoneHref: "tel:+19255458860",
+  phoneDisplay: "(925) 545-8860",
   email: "777akynov@gmail.com",
   emailHref: "mailto:777akynov@gmail.com",
 
@@ -49,7 +49,8 @@ export const siteConfig = {
   phone: businessConfig.phone,
   email: businessConfig.email,
   locale: "en_US",
-  ogImage: "/images/og-default.jpg",
+  ogImage: "/opengraph-image",
+  ogImageAlt: `${businessConfig.legalName} — ${businessConfig.tagline} in ${businessConfig.citiesDisplay}, ${businessConfig.stateAbbr}`,
 } as const;
 
 export type NavItem = {
