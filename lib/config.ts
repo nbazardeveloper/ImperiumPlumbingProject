@@ -45,7 +45,7 @@ export const businessConfig = {
 export const siteConfig = {
   name: businessConfig.legalName,
   description: `Residential and commercial plumbing for ${businessConfig.serviceArea} — plumbing repair, sewer & drain, water heaters, repiping, leak detection, and hydro jetting.`,
-  url: "https://www.imperiumplumbing.com",
+  url: "https://callimperium.com",
   phone: businessConfig.phone,
   email: businessConfig.email,
   locale: "en_US",
