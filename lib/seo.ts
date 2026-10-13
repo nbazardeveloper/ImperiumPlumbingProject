@@ -14,6 +14,8 @@ type BuildMetadataArgs = {
  */
 export function buildMetadata({ title, description, path, noIndex }: BuildMetadataArgs): Metadata {
   const url = `${siteConfig.url}${path}`;
+  // The page <title> gets the brand via the layout template; OG/Twitter titles don't, so add it here.
+  const socialTitle = title.includes(siteConfig.name) ? title : `${title} | ${siteConfig.name}`;
 
   return {
     title,
@@ -25,19 +27,19 @@ export function buildMetadata({ title, description, path, noIndex }: BuildMetada
       ? { index: false, follow: false }
       : { index: true, follow: true },
     openGraph: {
-      title,
+      title: socialTitle,
       description,
       url,
       siteName: siteConfig.name,
       locale: siteConfig.locale,
       type: "website",
-      images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
+      images: [{ url: siteConfig.ogImage, width: 1200, height: 630, alt: siteConfig.ogImageAlt }],
     },
     twitter: {
       card: "summary_large_image",
-      title,
+      title: socialTitle,
       description,
-      images: ["/opengraph-image"],
+      images: [{ url: siteConfig.ogImage, alt: siteConfig.ogImageAlt }],
     },
   };
 }

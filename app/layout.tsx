@@ -28,6 +28,22 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  applicationName: siteConfig.name,
+  openGraph: {
+    siteName: siteConfig.name,
+    title: `${siteConfig.name} | Residential & Commercial Plumbing`,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    locale: siteConfig.locale,
+    type: "website",
+    images: [{ url: siteConfig.ogImage, width: 1200, height: 630, alt: siteConfig.ogImageAlt }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteConfig.name} | Residential & Commercial Plumbing`,
+    description: siteConfig.description,
+    images: [{ url: siteConfig.ogImage, alt: siteConfig.ogImageAlt }],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

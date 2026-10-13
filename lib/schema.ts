@@ -29,7 +29,8 @@ export function buildLocalBusinessSchema() {
     url: siteConfig.url,
     telephone: businessConfig.phone,
     email: businessConfig.email,
-    image: `${siteConfig.url}/images/og-default.jpg`,
+    image: `${siteConfig.url}${siteConfig.ogImage}`,
+    logo: `${siteConfig.url}/images/logo.png`,
     priceRange: "$$",
     areaServed: businessConfig.serviceCities.map((city) => ({
       "@type": "City",
