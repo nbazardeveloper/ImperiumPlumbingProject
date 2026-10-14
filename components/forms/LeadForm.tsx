@@ -21,6 +21,7 @@ const inputClasses =
 export function LeadForm({ defaultService }: { defaultService?: string }) {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [startedTracked, setStartedTracked] = useState(false);
+  const [fieldError, setFieldError] = useState<string | null>(null);
 
   function handleFocusOnce() {
     if (!startedTracked) {
@@ -31,16 +32,35 @@ export function LeadForm({ defaultService }: { defaultService?: string }) {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setStatus("submitting");
 
     const form = new FormData(event.currentTarget);
+    const name = String(form.get("name") ?? "").trim();
+    const phone = String(form.get("phone") ?? "").trim();
+    const email = String(form.get("email") ?? "").trim();
+
+    if (!name) {
+      setFieldError("Please enter your name.");
+      return;
+    }
+    if (phone.replace(/\D/g, "").length < 10) {
+      setFieldError("Please enter a valid phone number.");
+      return;
+    }
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setFieldError("Please enter a valid email address.");
+      return;
+    }
+
+    setFieldError(null);
+    setStatus("submitting");
     try {
       await submitLead({
-        name: String(form.get("name") ?? ""),
-        phone: String(form.get("phone") ?? ""),
-        email: String(form.get("email") ?? ""),
+        name,
+        phone,
+        email,
         service: String(form.get("service") ?? ""),
         message: String(form.get("message") ?? ""),
+        website: String(form.get("website") ?? ""),
       });
       trackEvent("form_submit");
       setStatus("success");
@@ -63,6 +83,12 @@ export function LeadForm({ defaultService }: { defaultService?: string }) {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4" noValidate>
+      {/* Honeypot: hidden from people, often auto-filled by spam bots. */}
+      <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
+        <label htmlFor="website">Website</label>
+        <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
+
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className="mb-1.5 block text-sm font-semibold text-navy-950">
@@ -155,6 +181,12 @@ export function LeadForm({ defaultService }: { defaultService?: string }) {
         {status === "submitting" && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
         {status === "submitting" ? "Sending..." : "Request Service"}
       </button>
+
+      {fieldError && (
+        <p className="text-sm text-red-600" role="alert">
+          {fieldError}
+        </p>
+      )}
 
       {status === "error" && (
         <p className="text-sm text-red-600" role="alert">
